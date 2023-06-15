@@ -7,6 +7,7 @@ module Quickbooks
     class Deposit < BaseModel
       include DocumentNumbering
       include HasLineItems
+      include GlobalTaxCalculation
 
       #== Constants
       XML_COLLECTION_MODE = "Deposit"
