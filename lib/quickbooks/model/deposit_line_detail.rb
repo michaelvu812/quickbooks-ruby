@@ -10,8 +10,11 @@ module Quickbooks
       xml_accessor :txn_type, :from => 'TxnType'
       xml_accessor :custom_fields, :from => 'CustomField', :as => [CustomField]
       xml_accessor :tax_code_ref, :from => 'TaxCodeRef', :as => BaseReference
+      xml_accessor :tax_applicable_on, :from => 'TaxApplicableOn', :as => :text
 
       reference_setters :class_ref, :account_ref, :payment_method_ref, :entity_ref, :tax_code_ref
+
+      validates :tax_applicable_on, inclusion: {in: %w(Sales Purchase)}
 
     end
   end
